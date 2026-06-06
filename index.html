@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Ahmed Qasim · AI Engineer & Full-Stack Creator</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS (lightweight scroll animations) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9fafc;
+      color: #111827;
+      scroll-behavior: smooth;
+      line-height: 1.5;
+    }
+
+    /* premium gradient & glassmorphism touches */
+    :root {
+      --primary: #3b3bdb;
+      --primary-dark: #2a2ab0;
+      --accent: #f59e0b;
+      --dark-bg: #0a0a1f;
+      --gray-light: #f3f4f6;
+      --card-white: #ffffff;
+      --shadow-sm: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 20px 25px -12px rgba(0, 0, 0, 0.08);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Navigation */
+    nav {
+      padding: 1.5rem 0;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(4px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo {
+      font-weight: 800;
+      font-size: 1.8rem;
+      background: linear-gradient(135deg, #3b3bdb, #8b5cf6);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      color: #1f2937;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .btn-outline-light {
+      background: transparent;
+      border: 1.5px solid var(--primary);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: var(--primary);
+      transition: 0.2s;
+    }
+    .btn-outline-light:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0 5rem 0;
+    }
+    .hero-grid {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-badge {
+      background: #e0e7ff;
+      color: var(--primary-dark);
+      display: inline-block;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #111827, #3b3bdb);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 1.2rem;
+    }
+    .highlight {
+      color: var(--primary);
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      color: #4b5563;
+      margin-bottom: 1.8rem;
+      max-width: 550px;
+    }
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 2rem 0 1.8rem;
+    }
+    .skill-pill {
+      background: white;
+      border-radius: 40px;
+      padding: 0.4rem 1.2rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #eef2ff;
+    }
+    .hero-image {
+      flex: 0.8;
+      text-align: center;
+    }
+    .profile-photo {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 40% 60% 30% 70% / 50% 40% 60% 50%;
+      box-shadow: var(--shadow-md);
+      border: 4px solid white;
+      transition: transform 0.3s ease;
+    }
+    .profile-photo:hover {
+      transform: scale(1.02);
+    }
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: transparent;
+      border: 1.5px solid #cbd5e1;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #1f2937;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* Section headings */
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      letter-spacing: -0.01em;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), #a5b4fc);
+      border-radius: 3px;
+    }
+
+    /* Cards (GitHub Projects) */
+    .projects-grid, .design-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .project-card {
+      background: var(--card-white);
+      border-radius: 28px;
+      padding: 1.5rem;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid #f0f2f5;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.12);
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    .card-header i {
+      font-size: 1.8rem;
+      color: var(--primary);
+    }
+    .project-title {
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+    .project-desc {
+      color: #4b5563;
+      margin: 0.5rem 0 1rem;
+      font-size: 0.9rem;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 1.2rem;
+    }
+    .tech-tag {
+      background: #f3f4f6;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 500;
+    }
+    .repo-link {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Figma designs / wordpress showcase */
+    .design-card {
+      background: var(--card-white);
+      border-radius: 28px;
+      overflow: hidden;
+      transition: 0.2s;
+      box-shadow: var(--shadow-sm);
+    }
+    .design-info {
+      padding: 1.2rem 1.5rem 1.5rem;
+    }
+    .mockup-placeholder {
+      background: #eef2ff;
+      padding: 2rem;
+      text-align: center;
+      font-weight: 500;
+      color: var(--primary);
+    }
+    .design-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    /* Wordpress / Shopify section */
+    .client-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+    .client-card {
+      background: white;
+      border-radius: 24px;
+      padding: 1.2rem 1.8rem;
+      flex: 1;
+      min-width: 220px;
+      border: 1px solid #eef2ff;
+      transition: all 0.2s;
+    }
+    .client-card i {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* footer */
+    footer {
+      background: #0f172a;
+      color: #cbd5e1;
+      padding: 2.5rem 0;
+      margin-top: 4rem;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .container { padding: 0 1.5rem; }
+      .hero-content h1 { font-size: 2.5rem; }
+      .profile-photo { width: 220px; height: 220px; }
+      .nav-links { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-container">
+    <div class="logo">Ahmed<span style="color:#3b3bdb;">.</span>ai</div>
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#projects">Code</a>
+      <a href="#designs">Designs</a>
+      <a href="#clients">Clients</a>
+      <a href="https://github.com/ahmedsyedshah" target="_blank" class="btn-outline-light"><i class="fab fa-github"></i> GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content" data-aos="fade-right" data-aos-duration="700">
+        <div class="hero-badge"><i class="fas fa-robot"></i> AI Student · Full-Stack Creator</div>
+        <h1>Building intelligent <span class="highlight">web & mobile</span> experiences</h1>
+        <p class="hero-desc">Ahmed Qasim — Web developer, Flutter dev, Figma designer & AI solutions architect. Turning ideas into sleek, functional products.</p>
+        <div class="skill-pills">
+          <span class="skill-pill">Flutter</span><span class="skill-pill">React/JS</span><span class="skill-pill">Figma</span>
+          <span class="skill-pill">AI Chatbots</span><span class="skill-pill">Node.js</span><span class="skill-pill">Python</span>
+          <span class="skill-pill">Shopify</span><span class="skill-pill">WordPress</span>
+        </div>
+        <div class="btn-group">
+          <a href="#projects" class="btn-primary"><i class="fab fa-github"></i> Explore Projects</a>
+          <a href="https://www.upwork.com/" target="_blank" class="btn-secondary"><i class="fab fa-upwork"></i> Upwork Profile</a>
+        </div>
+      </div>
+      <div class="hero-image" data-aos="fade-left" data-aos-duration="700">
+        <!-- profile photo placeholder (you can replace the image link) 
+        Since you provided your photo, I'm using a placeholder but feel free to swap src -->
+        <img src="https://www.dropbox.com/scl/fi/cfu3463k6yqt7ae6p87ux/sdsdsdsdsdsdsdsdsdsdsdsdsdsd-3.png?rlkey=kin3jwxndsi31cb6mu7w0ghul&raw=1" alt="Ahmed Qasim" class="profile-photo" 
+             onerror="this.src='https://ui-avatars.com/api/?background=3b3bdb&color=fff&name=Ahmed+Qasim'">
+        <p style="margin-top: 1rem; font-size: 0.8rem; color:#6b7280;"><i class="fas fa-camera"></i> Ahmed Qasim</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GitHub Projects + AI Tools -->
+  <section id="projects" class="container" style="margin-bottom: 5rem;">
+    <div data-aos="fade-up">
+      <h2 class="section-title">✨ Featured Repositories</h2>
+      <p style="margin-bottom: 2rem; color:#4b5563;">Open-source Flutter apps, AI chatbots, full‑stack platforms & more.</p>
+    </div>
+    <div class="projects-grid">
+      <!-- dynamically listing from actual github data, but handcrafted based on your repos -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card-header"><i class="fab fa-flutter"></i><span class="project-title">Ecommerce App</span></div>
+        <p class="project-desc">Complete Flutter e‑commerce UI with cart & smooth animations. Dart-based mobile solution.</p>
+        <div class="tech-stack"><span class="tech-tag">Flutter</span><span class="tech-tag">Dart</span><span class="tech-tag">Firebase</span></div>
+        <a href="https://github.com/ahmedsyedshah/Ecommerceapp" target="_blank" class="repo-link"><i class="fab fa-github"></i> View on GitHub →</a>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="150">
+        <div class="card-header"><i class="fas fa-utensils"></i><span class="project-title">Food App + Backend</span></div>
+        <p class="project-desc">Food delivery mobile app (Flutter) & Node.js backend + meal UI. Complete order flow.</p>
+        <div class="tech-stack"><span class="tech-tag">Flutter</span><span class="tech-tag">JavaScript</span><span class="tech-tag">Node.js</span></div>
+        <a href="https://github.com/ahmedsyedshah/food_app" target="_blank" class="repo-link">food_app →</a> <span style="margin:0 5px">|</span>
+        <a href="https://github.com/ahmedsyedshah/food-delivery-backend" target="_blank" class="repo-link">backend →</a>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card-header"><i class="fas fa-graduation-cap"></i><span class="project-title">Student Portal</span></div>
+        <p class="project-desc">Student management portal with JS, interactive dashboards & role management.</p>
+        <div class="tech-stack"><span class="tech-tag">JavaScript</span><span class="tech-tag">HTML/CSS</span><span class="tech-tag">REST</span></div>
+        <a href="https://github.com/ahmedsyedshah/student-portal" target="_blank" class="repo-link"><i class="fab fa-github"></i> student-portal →</a>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="250">
+        <div class="card-header"><i class="fas fa-microphone-alt"></i><span class="project-title">Playlist Downloader</span></div>
+        <p class="project-desc">Media playlist downloader utility — HTML/JS powered tool.</p>
+        <div class="tech-stack"><span class="tech-tag">HTML</span><span class="tech-tag">JS</span></div>
+        <a href="https://github.com/ahmedsyedshah/playlist-downloader" target="_blank" class="repo-link">Explore →</a>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+        <div class="card-header"><i class="fas fa-gamepad"></i><span class="project-title">Tic Tac Toe Multiplayer</span></div>
+        <p class="project-desc">Real-time multiplayer tictactoe game (online) built with JS & websockets.</p>
+        <div class="tech-stack"><span class="tech-tag">JavaScript</span><span class="tech-tag">Socket.io</span></div>
+        <a href="https://github.com/ahmedsyedshah/tictactoe" target="_blank" class="repo-link">Playground →</a>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="350">
+        <div class="card-header"><i class="fas fa-robot"></i><span class="project-title">AI Chatbot (Private)</span></div>
+        <p class="project-desc">Intelligent conversational AI assistant — custom NLP & context handling.</p>
+        <div class="tech-stack"><span class="tech-tag">Python</span><span class="tech-tag">OpenAI API</span><span class="tech-tag">JavaScript</span></div>
+        <a href="https://github.com/ahmedsyedshah/Ai-chatbot" target="_blank" class="repo-link"><i class="fab fa-github"></i> Private repo (demo available)</a>
+      </div>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+        <div class="card-header"><i class="fas fa-code-branch"></i><span class="project-title">CodeScreenShot</span></div>
+        <p class="project-desc">Snippet to screenshot tool & code utilities — HTML/CSS based.</p>
+        <div class="tech-stack"><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JS</span></div>
+        <a href="https://github.com/ahmedsyedshah/CodeScreenShot" target="_blank" class="repo-link">Repository →</a>
+      </div>
+    </div>
+    <div style="margin-top: 2rem; text-align: center;" data-aos="fade-up">
+      <a href="https://github.com/ahmedsyedshah" target="_blank" class="btn-secondary" style="padding: 0.7rem 2rem;"><i class="fab fa-github"></i> See all 15+ repos on GitHub</a>
+    </div>
+  </section>
+
+  <!-- Figma designs + Flutter UI Screenshots -->
+  <section id="designs" style="background: var(--gray-light); padding: 4rem 0;">
+    <div class="container">
+      <div data-aos="fade-up">
+        <h2 class="section-title">🎨 Figma & UI Showcase</h2>
+        <p>Pixel‑perfect designs — mobile app UI, modern web layouts & design systems.</p>
+      </div>
+      <div class="design-grid" style="margin-top: 2rem;">
+        <div class="design-card" data-aos="flip-left" data-aos-delay="100">
+          <div class="mockup-placeholder"><i class="fas fa-paintbrush" style="font-size: 2rem;"></i> <br> Food App UI (Figma)</div>
+          <div class="design-info">
+            <div class="design-title">🍔 Food Delivery UI Concept</div>
+            <p style="font-size: 0.85rem; margin: 0.5rem 0;">High‑fidelity wireframes, auto layout, components ready for dev.</p>
+            <span class="tech-tag">Figma</span><span class="tech-tag">Prototype</span>
+          </div>
+        </div>
+        <div class="design-card" data-aos="flip-left" data-aos-delay="200">
+          <div class="mockup-placeholder"><i class="fas fa-mobile-alt" style="font-size: 2rem;"></i> <br> Flutter Food UI Screenshots</div>
+          <div class="design-info">
+            <div class="design-title">📱 Flutter Food App Screens</div>
+            <p style="font-size: 0.85rem;">From your repo 'food_delivery_meal' & custom ecommerce screens — smooth gradients & cards.</p>
+            <div class="tech-stack"><span class="tech-tag">Flutter</span><span class="tech-tag">Dart</span></div>
+          </div>
+        </div>
+        <div class="design-card" data-aos="flip-left" data-aos-delay="300">
+          <div class="mockup-placeholder"><i class="fas fa-dashboard" style="font-size: 2rem;"></i> <br> E‑commerce Admin Dashboard</div>
+          <div class="design-info">
+            <div class="design-title">📊 Analytics Dashboard (Figma)</div>
+            <p>Data‑driven design for student portal & AI insights dashboards.</p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top: 2rem; text-align: center;" data-aos="fade-up">
+        <p class="skill-pill" style="display: inline-block; background:#e0e7ff;">✨ Additional UI previews available upon request / portfolio expansion</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Work / WordPress + Shopify -->
+  <section id="clients" class="container" style="margin: 5rem auto;">
+    <div data-aos="fade-up">
+      <h2 class="section-title">💼 Live Client Projects</h2>
+      <p>WordPress, Shopify — high-performance business sites crafted for real brands.</p>
+    </div>
+    <div class="client-grid" style="margin-top: 2rem;">
+      <div class="client-card" data-aos="zoom-in" data-aos-delay="100">
+        <i class="fab fa-wordpress"></i>
+        <h3>Undercover Beverage</h3>
+        <p style="margin: 0.5rem 0;">Fully custom WordPress design, fast loading & brand-centric UI.</p>
+        <a href="https://undercoverbeverage.com.au/" target="_blank" class="repo-link">Visit Website →</a>
+      </div>
+      <div class="client-card" data-aos="zoom-in" data-aos-delay="200">
+        <i class="fab fa-shopify"></i>
+        <h3>Hijabi Princess</h3>
+        <p>Shopify e‑commerce theme customization, product showcases & smooth checkout.</p>
+        <a href="https://hijabiprincess.com/" target="_blank" class="repo-link">Explore Store →</a>
+      </div>
+      <div class="client-card" data-aos="zoom-in" data-aos-delay="300">
+        <i class="fas fa-chalkboard-user"></i>
+        <h3>AI Solutions consulting</h3>
+        <p>Custom AI chatbots, recommendation engines & intelligent data pipelines (student projects).</p>
+        <div><span class="tech-tag">Python</span><span class="tech-tag">LLMs</span><span class="tech-tag">RAG</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to action for Upwork -->
+  <div class="container" style="text-align: center; background: linear-gradient(110deg, #f0f4ff, #ffffff); border-radius: 48px; padding: 3rem; margin-bottom: 3rem;" data-aos="fade-up">
+    <h3 style="font-size: 1.8rem; font-weight: 700;">Need a web / mobile & AI solution?</h3>
+    <p style="margin: 0.8rem auto; max-width: 600px;">Let’s collaborate — from pixel-perfect Figma designs to full-stack apps with intelligent features.</p>
+    <div style="margin-top: 1.5rem;">
+      <a href="https://www.upwork.com/" target="_blank" class="btn-primary" style="background:#2c2c6c;"><i class="fab fa-upwork"></i> Hire me on Upwork</a>
+      <a href="https://github.com/ahmedsyedshah" target="_blank" class="btn-secondary" style="margin-left: 1rem;"><i class="fab fa-github"></i> GitHub Portfolio</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p><i class="fas fa-brain"></i> Ahmed Qasim — AI Student @ Khwaja Fareed University Pakistan</p>
+    <p style="margin-top: 1rem; font-size: 0.9rem;">Flutter • Figma • AI • MERN • WordPress • Upwork ready portfolio</p>
+    <div style="margin-top: 1.2rem;">
+      <a href="https://github.com/ahmedsyedshah" style="color:#a5b4fc; margin:0 10px;"><i class="fab fa-github fa-lg"></i></a>
+      <a href="#" style="color:#a5b4fc; margin:0 10px;"><i class="fab fa-linkedin"></i></a>
+      <a href="#" style="color:#a5b4fc; margin:0 10px;"><i class="fab fa-upwork"></i></a>
+    </div>
+    <p style="margin-top: 2rem; font-size: 0.75rem;">© 2026 — all projects linked from GitHub, live demos on request</p>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true, offset: 40 });
+  // smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if(target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
